@@ -1,0 +1,25 @@
+node_modules
+# Keep environment variables out of version control
+.env
+
+.output
+.data
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.template
