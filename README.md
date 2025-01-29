@@ -1,5 +1,12 @@
 # Pizza Backend
 
+## Repositories
+- [@BACKEND](https://github.com/RASEM0N/Pizza-Backend)
+- [@CLIENT](https://github.com/RASEM0N/Pizza-Client)
+- [@TELEGRAM_BOT](https://github.com/RASEM0N/Pizza-TelegramBot)
+- [@DEPLOY](https://github.com/RASEM0N/Pizza-Deploy)
+- [@LIBS](https://github.com/RASEM0N/Pizza-Libs)
+
 ## Todos
 - Чето с сущностями приколдес какой-то, надо подправить
 - Дополнить каждый документ, библиотеками или оставить их здесь, а в личный доках, как запустить и т.д.
