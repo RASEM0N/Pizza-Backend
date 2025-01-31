@@ -19,39 +19,34 @@ export class CategoryService {
 	}: SearchCategoriesDto): Promise<Category[]> {
 		return this.prisma.category.findMany({
 			where: {
-				name: { contains: query, mode: 'insensitive' },
+				name: query ? { contains: query, mode: 'insensitive' } : undefined,
 			},
 			include: {
 				products: {
 					orderBy: { id: sortBy },
 
-					// @TODO
-					// price: { gte: priceTo, lte: priceFrom },
 					where: {
-						// ingredients: ingredients
-						// 	? {
-						// 			some: {
-						// 				id: {
-						// 					in: ingredients,
-						// 				},
-						// 			},
-						// 		}
-						// 	: undefined,
-						// items: {
-						// 	some: {
-						// 		size: { in: sizes },
-						// 		pizzaType: { in: pizzaTypes },
-						//
-						//
-						// 	},
-						// },
+						ingredients: ingredients
+							? {
+									some: {
+										id: {
+											in: ingredients,
+										},
+									},
+								}
+							: undefined,
+						items: {
+							some: {
+								size: { in: sizes },
+								pizzaType: { in: pizzaTypes },
+								price: { gte: priceTo, lte: priceFrom },
+							},
+						},
 					},
 					include: {
 						ingredients: true,
 						items: {
-
-							// @TODO
-							// where: { price: { gte: priceTo, lte: priceFrom } },
+							where: { price: { gte: priceTo, lte: priceFrom } },
 							orderBy: { price: 'asc' },
 						},
 					},

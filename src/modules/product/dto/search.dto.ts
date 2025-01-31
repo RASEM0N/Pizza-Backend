@@ -1,4 +1,14 @@
+import { Transform } from 'class-transformer';
 import { IsArray, IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
+
+const QueryToArrayNumbers = () => {
+	return Transform(({ value }) =>
+		value
+			.split(',')
+			.map((v) => +v)
+			.filter((v) => v > 0),
+	);
+};
 
 export class SearchCategoriesDto {
 	@IsString()
@@ -11,14 +21,17 @@ export class SearchCategoriesDto {
 
 	@IsArray()
 	@IsOptional()
+	@QueryToArrayNumbers()
 	sizes?: number[];
 
 	@IsArray()
 	@IsOptional()
+	@QueryToArrayNumbers()
 	pizzaTypes?: number[];
 
 	@IsArray()
 	@IsOptional()
+	@QueryToArrayNumbers()
 	ingredients?: number[];
 
 	@IsNumber()
