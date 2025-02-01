@@ -32,7 +32,7 @@ import { OrderModule } from '@/modules/order/order.module';
 			isGlobal: true,
 			envFilePath: '.env',
 			validationSchema: Joi.object({
-				APP_PORT: Joi.number().required(),
+				PORT: Joi.number().required(),
 				RESEND_KEY: Joi.string().required(),
 				DATABASE_URL: Joi.string().required(),
 				JWT_SECRET: Joi.string().required(),
