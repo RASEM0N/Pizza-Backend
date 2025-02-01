@@ -4,6 +4,7 @@ import { AppModule } from '@/core/app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as cookieParser from 'cookie-parser';
 import * as morgan from 'morgan';
+import * as process from 'process';
 
 async function bootstrap() {
 	const app = await NestFactory.create(AppModule);
@@ -24,13 +25,10 @@ async function bootstrap() {
 	// https://github.com/expressjs/morgan
 	app.use(morgan('dev'));
 
-	// @TODO надо настривать
 	app.enableCors({
-		origin: ['http://localhost:3000'],
-
-		// чтоб можно было из http://localhost:3000
-		// кукисы принимать и записывать
-		credentials: true
+		// поддержка кукисов
+		credentials: true,
+		origin: [process.env.FRONTEND_URL],
 	});
 
 	// https://docs.nestjs.com/openapi/introduction
