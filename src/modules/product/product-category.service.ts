@@ -1,11 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '@/shared/prisma';
+import { PrismaService } from '@pizza/prisma';
 import { SearchCategoriesDto } from './dto/search.dto';
 import { Category } from '@prisma/client';
 
-// @todo не на своем месте находится
 @Injectable()
-export class CategoryService {
+export class ProductCategoryService {
 	constructor(private readonly prisma: PrismaService) {}
 
 	async search({

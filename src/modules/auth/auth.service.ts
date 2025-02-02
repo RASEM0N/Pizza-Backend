@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '@/shared/prisma';
+import { PrismaService } from '@pizza/prisma';
 import { User } from '@prisma/client';
 import { LoginDto, RegisterDto } from './dto/login.dto';
 import { UserService } from '@/modules/user/user.service';
@@ -22,19 +22,17 @@ export class AuthService {
 		return { user, token };
 	}
 
-	// @todo -> UserController Post method
 	async register(dto: RegisterDto): Promise<User> {
 		const user = await this.userService.create(dto);
 
-
-		// @TODO по идее это должно быть в другом месте
-		// в создание
 		await this.resendService.send({
-			// @TODO Ban
-			from: 'onboarding@resend.dev',
+			from: '@todo@mail.ru',
 			to: user.email,
-			subject: '',
-			html: '',
+			subject: 'Next Pizza | Пользователь зарегистрирован',
+			html: `
+				<div>Пользователь ${user.fullName} зарегистрирован</div>
+				<div>Ссылка на подтверждение <a href="www.youtube.com">подтвердить</a></div>
+			`,
 		});
 
 		return user;

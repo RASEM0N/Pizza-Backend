@@ -20,6 +20,24 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@pizza/common": [
+        "libs/common/src"
+      ],
+      "@pizza/common/*": [
+        "libs/common/src/*"
+      ],
+      "@pizza/yookassa": [
+        "libs/yookassa/src"
+      ],
+      "@pizza/yookassa/*": [
+        "libs/yookassa/src/*"
+      ],
+      "@pizza/prisma": [
+        "libs/prisma/src"
+      ],
+      "@pizza/prisma/*": [
+        "libs/prisma/src/*"
       ]
     }
   }

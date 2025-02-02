@@ -13,7 +13,7 @@ import { Cart } from '@prisma/client';
 import { CartService } from './cart.service';
 import { CreateCartDto } from './dto/create.dto';
 import { UpdateCartDto } from './dto/update.dto';
-import { Cookie } from '@/shared/cookie';
+import { Cookie } from '@pizza/common/cookie';
 import { Response as ExpResponse } from 'express';
 
 @ApiTags('Cart')

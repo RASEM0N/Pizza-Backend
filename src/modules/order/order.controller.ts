@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { OrderService } from './order.service';
-import { Cookie } from '@/shared/cookie';
-import { YookassaPaymentCallback } from '@/shared/yookassa';
+import { Cookie } from '@pizza/common/cookie';
+import { YookassaPaymentCallback } from '@pizza/yookassa';
 import { OrderStatus } from '@prisma/client';
 import { CreateOrderDto } from './dto/create.dto';
 import { PriceDetails } from './dto/get-details.dto';
@@ -17,7 +17,8 @@ export class OrderController {
 		@Cookie('cart-token') token: string,
 		@Body() dto: CreateOrderDto,
 	): Promise<string> {
-		return this.orderService.create(token, dto);
+		const result = await this.orderService.create(token, dto);
+		return result.payment.confirmation.confirmation_url;
 	}
 
 	@Post('callback')

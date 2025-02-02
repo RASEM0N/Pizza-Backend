@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '@/shared/prisma';
+import { PrismaService } from '@pizza/prisma';
 import { Cart, CartItem } from '@prisma/client';
 import { v4 as uuidv4 } from 'uuid';
 import { CreateCartDto } from './dto/create.dto';

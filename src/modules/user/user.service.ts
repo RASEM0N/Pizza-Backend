@@ -3,7 +3,7 @@ import { UpdateUserDto } from './dto/update.dto';
 import { CreateUserDto } from './dto/create.dto';
 import { User } from '@prisma/client';
 import { hash, genSalt, compare } from 'bcrypt';
-import { PrismaService } from '@/shared/prisma';
+import { PrismaService } from '@pizza/prisma';
 import { ResendService } from 'nestjs-resend';
 
 // @TODO
@@ -50,8 +50,6 @@ export class UserService {
 
 		if (user.email !== updatedUser.email) {
 			// @TODO если почта изменилась то должна отправлятся письмо на почту
-
-			// @TODO Ban
 			await this.resendService.send({
 				from: 'onboarding@resend.dev',
 				to: updatedUser.email,

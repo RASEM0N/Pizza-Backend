@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ResendModule } from 'nestjs-resend';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
-import { PrismaModule } from '@/shared/prisma';
+import { PrismaModule } from '@pizza/prisma';
 import { AuthModule } from '@/modules/auth/auth.module';
 import { CartModule } from '@/modules/cart/cart.module';
 import { ProductModule } from '@/modules/product/product.module';
@@ -10,7 +10,7 @@ import { StoryModule } from '@/modules/story/story.module';
 import { UserModule } from '@/modules/user/user.module';
 import { IngredientModule } from '@/modules/ingredient/ingredient.module';
 import * as Joi from 'joi';
-import { YookassaModule } from '@/shared/yookassa';
+import { YookassaModule } from '@pizza/yookassa';
 import { OrderModule } from '@/modules/order/order.module';
 
 @Module({
@@ -81,6 +81,9 @@ import { OrderModule } from '@/modules/order/order.module';
 					callbackUrl: configService.get('YOOKASSA_CALLBACK_URL'),
 					apiKey: configService.get('YOOKASSA_STORE_ID'),
 					storeId: configService.get('YOOKASSA_API_KEY'),
+
+					// @TODO пока что не тестил с запросами к yookassa
+					fake: true,
 				};
 			},
 		}),

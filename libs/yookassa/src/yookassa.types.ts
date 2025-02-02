@@ -5,6 +5,7 @@ export interface YookassaConfig {
 	callbackUrl: string;
 	storeId: string;
 	apiKey: string;
+	fake?: boolean;
 }
 
 export interface YookassaModuleOptions extends Pick<ModuleMetadata, 'imports'> {

@@ -6,13 +6,18 @@ import {
 	YookassaCreatePayment,
 	YookassaPaymentData,
 } from './yookassa.types';
-import { YOOKASSA_CONFIG } from '@/shared/yookassa/yookassa.provider';
+import { YOOKASSA_CONFIG } from './yookassa.provider';
+import { paymentData } from './data';
 
 @Injectable()
 export class YookassaService {
 	constructor(@Inject(YOOKASSA_CONFIG) private readonly config: YookassaConfig) {}
 
 	async createPayment(data: YookassaCreatePayment): Promise<YookassaPaymentData> {
+		if (this.config.fake) {
+			return paymentData;
+		}
+
 		// https://yookassa.ru/developers/api#create_payment
 		const resp = await fetch(this.config.url, {
 			body: JSON.stringify({
